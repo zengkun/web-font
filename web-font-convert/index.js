@@ -1,30 +1,32 @@
+// API: http://efe.baidu.com/blog/fontmin-getting-started/
+
 var Fontmin = require('fontmin');
 var ttf2woff2 = require('gulp-ttf2woff2');
 var imagemin = require('imagemin');
 var svgo = require('imagemin-svgo');
 
 var fontmin = new Fontmin()
-    .src('font/PingFang-Light.ttf')
-    .dest('build/')
+    .src('font/PingFang-Medium.ttf')
     .use(Fontmin.ttf2eot())
     .use(Fontmin.ttf2woff({
-        deflate: true           
+        deflate: true
     }))
-    .use(Fontmin.glyph({
-        text: '对woff2的支持'
+    .use(ttf2woff2({
+        clone: true
     }))
-    .use(ttf2woff2({clone: true}))
-    .use(Fontmin.ttf2svg());
+    .use(Fontmin.ttf2svg())
+    // .use(Fontmin.css()) // css 生成插件
+    .dest('build/');
 
-    //压缩svg图片
-    imagemin(['build/*.svg'], 'build/compress', {
-	    use: [svgo()]
-	}).then(() => {
-	    console.log('Images optimized');
-	});
+//压缩svg图片
+imagemin(['build/*.svg'], 'build/compress', {
+    use: [svgo()]
+}).then(() => {
+    console.log('Images optimized');
+});
 
-    fontmin.run(function (err, files) {
-    if (err) {
+fontmin.run(function(err, files) {
+    if(err) {
         throw err;
     }
 

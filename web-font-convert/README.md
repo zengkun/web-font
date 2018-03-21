@@ -1,6 +1,8 @@
 # web-font-convert
 convert ttf to eot,convert ttf to woff,and convert ttf to svg
 
+https://github.com/chenfengyanyu/web-font-convert
+
 ## 项目构成
 - font
 	- 需要转换格式的字体文件，如PingFang-Light.ttf
@@ -15,6 +17,7 @@ convert ttf to eot,convert ttf to woff,and convert ttf to svg
 
 ## What? 不支持woff2
 看过来 gulp-ttf2woff2
+
 https://github.com/nfroidure/gulp-ttf2woff2
 
 ```sh
@@ -22,9 +25,10 @@ npm install --save-dev gulp-ttf2woff2
 ```
 
 ```javascript
-.use(Fontmin.glyph({
-    text: '对woff2的支持'
-}))
+var ttf2woff2 = require('gulp-ttf2woff2');
+
+......
+
 .use(ttf2woff2({clone: true}))
 ```
 详细请看index.js吧~
@@ -37,7 +41,7 @@ node index.js
 ```
 
 ## 目标
-将ttf字体文件转换为woff，eot，svg等格式，因为svg转换后文件过大，因此优化后输出到compress目录中。
+将ttf字体文件转换为woff(woff2)，eot，svg等格式，因为svg转换后文件过大，因此优化后输出到compress目录中。
 
 ## 参考引用
 - fontmin：
