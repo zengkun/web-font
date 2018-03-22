@@ -5,8 +5,14 @@ var ttf2woff2 = require('gulp-ttf2woff2');
 var imagemin = require('imagemin');
 var svgo = require('imagemin-svgo');
 
+// 也支持指定按需打包文字，同font-spider-demo
+// var staticWord = "苹方对woff2的支持";
+
 var fontmin = new Fontmin()
-    .src('font/PingFang-Medium.ttf')
+    .src('font/PingFang-Light.ttf')
+    // .use(Fontmin.glyph({
+    //     text: staticWord
+    // }))
     .use(Fontmin.ttf2eot())
     .use(Fontmin.ttf2woff({
         deflate: true

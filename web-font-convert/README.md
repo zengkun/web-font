@@ -33,6 +33,17 @@ var ttf2woff2 = require('gulp-ttf2woff2');
 ```
 详细请看index.js吧~
 
+## 也支持指定按需打包文字，同font-spider-demo
+
+```javascript
+var staticWord = "对woff2的支持";
+
+......
+
+.use(Fontmin.glyph({
+     text: staticWord
+ }))
+```
 
 ## 运行
 ```sh
